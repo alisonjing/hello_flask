@@ -3,7 +3,7 @@ print('current directory')
 print(os.getcwd())
 
 from flask import Flask, request, jsonify
-from torch_utils import transform_image, get_prediction
+from app.torch_utils import transform_image, get_prediction
 
 # Create an app
 app = Flask(__name__)
@@ -35,8 +35,4 @@ def predict():
             return jsonify({'error': 'error during prediction'})
 
         
-    # 1 load image
-    # 2 image -> tensor
-    # 3 prediction
-    # 4 return json
-    return jsonify({"result":1})
+  
