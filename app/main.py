@@ -3,9 +3,9 @@ print('current directory')
 print(os.getcwd())
 
 from flask import Flask, request, jsonify
-#from flask_cli import FlaskCLI
+from flask_cli import FlaskCLI
 from gevent.pywsgi import WSGIServer
-from app.torch_utils import transform_image, get_prediction
+from torch_utils import transform_image, get_prediction
 
 
 # Create an app
