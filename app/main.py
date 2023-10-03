@@ -3,10 +3,20 @@ print('current directory')
 print(os.getcwd())
 
 from flask import Flask, request, jsonify
+#from flask_cli import FlaskCLI
+from gevent.pywsgi import WSGIServer
 from app.torch_utils import transform_image, get_prediction
+
 
 # Create an app
 app = Flask(__name__)
+
+# Setting up debug mode        
+if __name__ == '__main__':
+    app.run(debug=True)
+    #Production
+    http_server = WSGIServer(('', 5000), app)
+    http_server.serve_forever()
 
 # Define allowed image extensions
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -33,6 +43,8 @@ def predict():
         
         except:
             return jsonify({'error': 'error during prediction'})
+
+
 
         
   
